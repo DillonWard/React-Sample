@@ -15,9 +15,14 @@ export default class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this)
   // }
 
-  handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 })
-  }
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  // doHandleIncrement = () => {
+  //   this.handleIncrement({ id: 1 });
+  // };
 
   // wrap in a <div> because babel can only render 1 element at a time
   // wrapping it in a div can wrap multiple elements inside 1 - need a parent element
@@ -29,7 +34,7 @@ export default class Counter extends Component {
           {this.formatCounter()}
         </span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement({ id: 1 })}
           className="btn btn-secondary btn-sm"
         >
           Increment
