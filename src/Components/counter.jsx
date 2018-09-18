@@ -15,11 +15,19 @@ export default class Counter extends Component {
   // wrapping it in a div can wrap multiple elements inside 1 - need a parent element
   // React.Fragment gets rid of unnecessary extra divs
   render() {
+
     return(
     <React.Fragment>
-      <span style = { this.styles } className="badge badge-primary m-2">{this.formatCounter()}</span>
+      <span style = { this.styles } className={this.getBadgeClasses()}>{this.formatCounter()}</span>
       <button className="btn btn-secondary btn-sm">Increment</button>
     </React.Fragment>);
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    // append to the end of classes - if the counter is 0 append 'warning' otherwise append 'primary'
+    classes += (this.state.count === 0) ? "warning" : "primary";
+    return classes;
   }
 
   formatCounter(){
